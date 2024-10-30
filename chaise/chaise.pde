@@ -3,14 +3,14 @@ PShape piedAvant1, piedAvant2;
 PShape piedArriere1, piedArriere2;
 PShape assise, dossier;
 PImage imageMetal,imageBois ;
-PShape oui;
+PShape object;
 
 void setup() {
   size(600, 600, P3D);
-   imageMetal = loadImage("chaisePied.jpg");
-   imageBois = loadImage("chaiseBois.jpg");
-  oui = objectChaise();
-  
+  imageMetal = loadImage("chaisePied.jpg");
+  imageBois = loadImage("chaiseBois.jpg");
+  object = objectChaise();
+
 }
 
 PShape objectChaise()
@@ -79,41 +79,35 @@ PShape cubeMagique(int tailleX, int tailleY, int tailleZ, PImage texture) {
     }
 
     
-    topShape.beginShape(QUADS);
     topShape.vertex(tailleX,-tailleY,tailleZ, 0, 0);  //Point A
     topShape.vertex(-tailleX,-tailleY,tailleZ, 0, 1); //Point D
     topShape.vertex(-tailleX,-tailleY,-tailleZ, 1, 1);//Point E
     topShape.vertex(tailleX,-tailleY,-tailleZ, 1, 0); //Point F
        
-    bottomShape.beginShape(QUADS);
     bottomShape.vertex(-tailleX,tailleY,tailleZ, 0, 0);  //Point C
     bottomShape.vertex(tailleX,tailleY,tailleZ, 0, 1);   //Point B
     bottomShape.vertex(tailleX,tailleY,-tailleZ, 1, 1);  //Point G
     bottomShape.vertex(-tailleX,tailleY,-tailleZ, 1, 0); //Point H
       
    
-    leftShape.beginShape(QUADS);
     leftShape.vertex(-tailleX,tailleY,tailleZ, 0, 0);  //Point C
     leftShape.vertex(-tailleX,-tailleY,tailleZ, 0, 1); //Point D
     leftShape.vertex(-tailleX,-tailleY,-tailleZ, 1, 1);//Point E
     leftShape.vertex(-tailleX,tailleY,-tailleZ, 1, 0); //Point H
       
     
-    rightShape.beginShape(QUADS);
     rightShape.vertex(tailleX,-tailleY,tailleZ, 0, 0);  //Point A
     rightShape.vertex(tailleX,-tailleY,-tailleZ, 0, 1); //Point F
     rightShape.vertex(tailleX,tailleY,-tailleZ, 1, 1);  //Point G
     rightShape.vertex(tailleX,tailleY,tailleZ, 1, 0);   //Point B
       
     
-    frontShape.beginShape(QUADS);
     frontShape.vertex(tailleX,-tailleY,tailleZ, 0, 0);  //Point A
     frontShape.vertex(tailleX,tailleY,tailleZ, 0, 1);   //Point B
     frontShape.vertex(-tailleX,tailleY,tailleZ, 1, 1);  //Point C
     frontShape.vertex(-tailleX,-tailleY,tailleZ, 1, 0); //Point D
 
     
-    backShape.beginShape(QUADS);
     backShape.vertex(-tailleX,-tailleY,-tailleZ, 0, 0);//Point E
     backShape.vertex(tailleX,-tailleY,-tailleZ, 0, 1); //Point F
     backShape.vertex(tailleX,tailleY,-tailleZ, 1, 1);  //Point G
@@ -130,7 +124,7 @@ PShape cubeMagique(int tailleX, int tailleY, int tailleZ, PImage texture) {
       p.endShape();
       cube.addChild(p);
     }
-   
+     
      return cube;
    }
    
@@ -144,7 +138,7 @@ void draw() {
     rotateY(angle);
     rotateX(0.2);
 
-     shape(oui);
+     shape(object);
   popMatrix();
   
   if(!mousePressed)
